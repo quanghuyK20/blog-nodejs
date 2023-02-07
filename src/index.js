@@ -7,9 +7,14 @@ const port = 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(express.json());
+
 console.log(__dirname);
 //HTTP logger
-app.use(morgan("combined"));
+// app.use(morgan("combined"));
 
 //template engine
 app.engine(
@@ -28,6 +33,10 @@ app.get("/", (req, res) => {
 
 app.get("/news", (req, res) => {
   res.render("news");
+});
+
+app.get("/search", (req, res) => {
+  res.render("search");
 });
 
 app.listen(port);
