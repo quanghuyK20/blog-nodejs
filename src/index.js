@@ -1,17 +1,32 @@
-const express = require('express')
-const morgan = require('morgan')
-const handlebars = require('express-handlebars')
+const path = require("path");
+const express = require("express");
+const app = express();
+const hbs = require("express-handlebars");
+const morgan = require("morgan");
+const port = 3000;
 
-const app = express()
+app.use(express.static(path.join(__dirname, "public")));
+console.log(__dirname);
+//HTTP logger
+app.use(morgan("combined"));
 
-app.use(morgan('combined'))
+//template engine
+app.engine(
+  "hbs",
+  hbs.engine({
+    extname: ".hbs",
+  })
+);
 
-app.engine('handlebars', handlebars.engine())
-app.set('view engine', 'handlebars')
-app.set('views', './src/resources/views')
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "./resources/views"));
 
-app.get('/home', function (req, res) {
-  res.send(`<h1>Hello</h1>`)
-})
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
-app.listen(3000)
+app.get("/news", (req, res) => {
+  res.render("news");
+});
+
+app.listen(port);
