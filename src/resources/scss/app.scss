@@ -1,3 +1,9 @@
+@import 'variables';
+
 h1 {
-  color: aqua;
+  color: rgb(148, 118, 218);
+}
+
+h2{
+  color: $red-color;
 }

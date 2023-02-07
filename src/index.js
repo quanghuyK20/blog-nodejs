@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const port = 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
+
 console.log(__dirname);
 //HTTP logger
 app.use(morgan("combined"));
