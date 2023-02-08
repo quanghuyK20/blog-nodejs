@@ -5,18 +5,28 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
-    "watch": "node-sass -w src/resources/scss/ -o src/public/css/" ,
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "node-sass -w src/resources/scss/ -o src/public/css/",
+    "beautiful": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
   },
+  "lint-staged": {
+    "src/**/*.{js,json,ssss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write",
+    "*.{js,css,md}": "prettier --write"
+  },
   "devDependencies": {
     "express-handlebars": "^6.0.7",
+    "husky": "^8.0.3",
+    "lint": "^0.8.19",
+    "lint-staged": "^13.1.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
+    "prettier": "^2.8.4",
     "sass": "^1.58.0",
     "script": "^0.1.4"
   }
