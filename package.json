@@ -15,8 +15,7 @@
     "express": "^4.18.2"
   },
   "lint-staged": {
-    "src/**/*.{js,json,ssss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write",
-    "*.{js,css,md}": "prettier --write"
+    "src/**/*.{js,json,ssss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
   "husky": {
     "hooks": {
